@@ -1,0 +1,2 @@
+class ServiceRecordsController < ApplicationController
+end
