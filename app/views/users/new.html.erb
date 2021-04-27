@@ -1,0 +1,13 @@
+<h1> Bike Trader Sign Up </h1>
+
+<% form_with(model: @user, url: signup_path) do |f| %> 
+<%= f.label :email %>
+<%= f.text_field :email %> <br>
+<%= f.label :username %>
+<%= f. text_field :username %> <br>
+<%= f.label :name %>
+<%= f.text_field :name %> <br>
+<%= f.label :password %>
+<%= f.text_field :password %> <br>
+<%= f.submit "Sign Up" %>
+<% end %>

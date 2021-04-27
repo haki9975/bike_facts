@@ -4,7 +4,6 @@ class CreateBikes < ActiveRecord::Migration[6.1]
       t.string :name
       t.string :description
       t.string :serial_number
-
       t.timestamps
     end
   end

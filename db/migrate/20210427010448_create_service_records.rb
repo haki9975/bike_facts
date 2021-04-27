@@ -5,7 +5,6 @@ class CreateServiceRecords < ActiveRecord::Migration[6.1]
       t.string :date
       t.integer :cost
       t.string :notes
-
       t.timestamps
     end
   end
