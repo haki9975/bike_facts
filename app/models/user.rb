@@ -1,6 +1,7 @@
 class User < ApplicationRecord
     has_many :bikes, dependent: :destroy
     has_many :service_records, through: :bikes 
+    has_many :transfers, through: :bikes
     has_secure_password
     vaildates :email, uniqueness: true
     def new
