@@ -3,7 +3,7 @@ class User < ApplicationRecord
     has_many :service_records, through: :bikes 
     has_many :transfers, through: :bikes
     has_secure_password
-    vaildates :email, uniqueness: true
+    validates :email, uniqueness: true
     def new
         User.new
     end
