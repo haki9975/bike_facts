@@ -5,13 +5,14 @@ class User < ApplicationRecord
     has_secure_password
     validates :email, uniqueness: true
     def new
-        User.new
+       @user = User.new
     end
 
     def create
         @user = User.find_by_id[:user_params]
         if @user.save
             flash[:message] = "Congratulations, You Have Registered!"
+            session[:id] = @user.id 
             #redirect to landing page
         else
             render :new 
