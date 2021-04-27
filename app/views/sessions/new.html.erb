@@ -1,0 +1,10 @@
+<h1> Bike Trader Log In </h1>
+<%= render partial: 'errors/errors', locals: {model: @user} if @user %>
+
+<% form_with(model: @user, url: login_path) do |f| %> 
+<%= f.label :username %>
+<%= f. text_field :username %> <br>
+<%= f.label :password %>
+<%= f.text_field :password %> <br>
+<%= f.submit "Login" %>
+<% end %>
