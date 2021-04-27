@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :transfers
   root('static#home')
   resources :service_records
   resources :bikes
