@@ -8,10 +8,15 @@ class SessionsController < ApplicationController
         if @user && @user.authenticate(params[:user][:password])
             flash[:message] = "Welcome Back!"
             session[:user_id] = @user.id
-            redirect # landing page
+            redirect_to # landing page
         else
             flash[:message] = "Login Attempt Failed, Check Credentials"
-            redirect login_path
+            redirect_to login_path
         end
+    end
+    
+    def logout
+        session.clear
+        redirect_to login_path
     end
 end
