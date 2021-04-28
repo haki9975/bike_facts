@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
             session[:user_id] = @user.id
             redirect # landing page
         else
-            flash[:]
+            flash[:message] = "Login Attempt Failed, Check Credentials"
             redirect login_path
         end
     end

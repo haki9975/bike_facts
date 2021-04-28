@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    has_many :owned_bikes, class: "Bike", foreign_key: "user_id", dependent: :destroy
+   # has_many :owned_bikes, :class "Bike", foreign_key: "user_id", dependent: :destroy
     has_many :service_records
     has_many :bikes, through: :service_records 
    # has_many :transfers, through: :bikes
@@ -8,6 +8,7 @@ class User < ApplicationRecord
     validates :username, presence: true, uniqueness: true
     def new
        @user = User.new
+       redirect_to signup_path
     end
 
     def create
