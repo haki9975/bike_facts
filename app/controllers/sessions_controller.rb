@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-    #skip_before_action :verify_authenticity_token, only: [:omniauth]
+    skip_before_action :verify_authenticity_token, only: [:omniauth]
     def new
       @user = User.find_by_id(params[:id])
     end
@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
             redirect_to bikes_path
         else
             flash[:message] = @user.errors.full_messages
-            redirect_to login_path
+            render :new
         end
     end
     
@@ -23,12 +23,11 @@ class SessionsController < ApplicationController
     end
 
     def omniauth
-        
         @user = User.find_or_create_by(username: auth[:info][:email]) do |u|
             u.email = auth[:info][:email]
-            u.username = auth[:info][:username]
+            u.username = auth[:info][:email]
             u.name = auth[:info][:name]
-            u.uid = auth[:uid]
+            u.uid = auth[:info][:uid]
             u.provider = auth[:provider]
             u.password = SecureRandom.hex(10)
         end
@@ -45,6 +44,6 @@ class SessionsController < ApplicationController
 
     private 
     def auth
-        request.env['omniauth.auth']
+      request.env['omniauth.auth']
     end
 end
