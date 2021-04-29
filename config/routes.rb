@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root('static#home')
-  get '/signup', to: 'users#new'
-  post '/signup_attempt', to: 'users#create'
+  resources :users, only: [:new, :create]
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   resources :service_records

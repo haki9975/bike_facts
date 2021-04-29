@@ -1,22 +1,24 @@
 class UsersController < ApplicationController
     def new
         @user = User.new
-        redirect_to signup_path
-     end
+    end
      
      def create
-        @user = User.find_by_id[:user_params]
+        #binding.irb
+        @user = User.new(user_params)
+        
         if @user.save
             flash[:message] = "Congratulations, You Have Registered!"
             session[:id] = @user.id 
-            #redirect to landing page
+            redirect_to bikes_path
         else
-            render :new 
+            flash[:message] = @user.errors.full_messages
+            render :new
         end
     end
 
     private
     def user_params
-        params.require(:user).permit(:name, :username, :password, :email)
+        params.require(:user).permit(:id, :name, :username, :password, :email)
     end
 end

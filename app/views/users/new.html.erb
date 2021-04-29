@@ -1,7 +1,8 @@
 <h1> Bike Trader Sign Up  </h1>
-<%= render partial: 'errors/errors', locals: {model: @user} if @user %>
 
-<%= form_with(model: @user, url: signup_attempt_path) do |f| %> 
+
+
+<%= form_with(model: @user, url: users_path, method: :post) do |f| %> 
 <%= f.label :email %>
 <%= f.text_field :email %> <br>
 <%= f.label :username %>
@@ -9,6 +10,6 @@
 <%= f.label :name %>
 <%= f.text_field :name %> <br>
 <%= f.label :password %>
-<%= f.text_field :password %>  <br>
+<%= f.password_field :password %>  <br>
 <%= f.submit "Sign Up" %>
 <% end %>
