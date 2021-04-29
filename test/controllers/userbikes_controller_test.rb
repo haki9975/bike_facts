@@ -1,6 +1,6 @@
 require "test_helper"
 
-class TransferTest < ActiveSupport::TestCase
+class UserbikesControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

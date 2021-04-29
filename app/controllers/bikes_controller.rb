@@ -3,7 +3,6 @@ class BikesController < ApplicationController
   
     def index
         @bikes = current_user.bikes
-        redirect_to bikes_path(@bikes)
     end
 
     def new 

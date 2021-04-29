@@ -1,0 +1,2 @@
+class Userbike < ApplicationRecord
+end

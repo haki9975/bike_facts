@@ -4,8 +4,9 @@ class UsersController < ApplicationController
     end
      
      def create
-        #binding.irb
         @user = User.new(user_params)
+        @user.save
+        binding.irb
         
         if @user.save
             flash[:message] = "Congratulations, You Have Registered!"
