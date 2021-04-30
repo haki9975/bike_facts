@@ -1,5 +1,6 @@
 <h1> Bike Trader Login </h1>
 
+<%= flash[:message] %>
 
 <%= form_with(scope: :user, url: login_path, method: "post") do |f| %> 
 <%= f.label :username %>

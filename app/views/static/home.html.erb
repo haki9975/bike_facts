@@ -9,3 +9,5 @@
 <%= button_to new_user_path, method: "get" do %>
   Signup 
 <% end %>
+
+<%= button_to 'Login With Google', "/auth/google_oauth2", class: 'nav-link active' , method: "post" %>

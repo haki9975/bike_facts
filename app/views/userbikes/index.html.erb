@@ -1,0 +1,13 @@
+<h1> Your Bikes Index </h1>
+<% if @ubikes != []%>
+  <% @ubikes.each do |b| %>
+    <%= b.name %>
+    <%= b.description %>
+    <%= b.link_to "Show", b%>
+    <%= b.link_to "Edit", edit_userbike_path(b) %>
+  <% end %>
+<% else %>
+    <p> Oops, you haven't created a bike yet! </p>
+    <%= link_to "Create Bike Here!", new_userbike_path %>
+<% end %> 
+

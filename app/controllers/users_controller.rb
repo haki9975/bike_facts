@@ -1,17 +1,16 @@
 class UsersController < ApplicationController
+     
     def new
         @user = User.new
     end
      
      def create
-        @user = User.new(user_params)
-        @user.save
-        binding.irb
-        
+        @user = User.new(user_params)        
         if @user.save
             flash[:message] = "Congratulations, You Have Registered!"
             session[:id] = @user.id 
-            redirect_to bikes_path
+            binding.pry
+            redirect_to userbikes_path
         else
             flash[:message] = @user.errors.full_messages
             render :new

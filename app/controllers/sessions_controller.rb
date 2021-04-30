@@ -1,18 +1,16 @@
 class SessionsController < ApplicationController
-    skip_before_action :verify_authenticity_token, only: [:omniauth]
     def new
       @user = User.find_by_id(params[:id])
     end
 
     def create
-        binding.irb
-        @user = User.find_by_username(params[:user][:username])
+       @user = User.find_by_username(params[:user][:username])
         if @user && @user.authenticate(params[:user][:username])
             flash[:message] = "Welcome Back!"
             session[:user_id] = @user.id
             redirect_to bikes_path
         else
-            flash[:message] = @user.errors.full_messages
+            flash[:message] = "Login Failed, Please Check Credentials"
             render :new
         end
     end
