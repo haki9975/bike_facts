@@ -1,0 +1,13 @@
+<h1> Edit Bike Info: </h1>
+
+<%= form_with(model: @bike) do |b| %>
+    <%=b.collection_select(:bike_id, Bike.all, :id, :brand) %>
+    <p><%= b.label :name %> </p><br>
+    <p><%= b.text_field :name %> </p><br>
+    <p><%= b.label :serial_number %> </p><br>
+    <p><%= b.text_field :serial_number %> </p><br>
+    <p><%= b.label :notes %> </p><br>
+    <p><%= b.text_area :notes %> </p><br>
+    <%= b.submit "Save Changes" %>
+
+<%end%>

@@ -10,9 +10,8 @@ class UserbikesController < ApplicationController
     end
 
     def create 
-        
-        @bike = Userbike.create!(userbike_params)        
-        if @bike.persisted?
+        @bike =current_user.userbikes.build(userbike_params)        
+        if @bike.save
           flash[:message] = "Bike Information Saved!"
           redirect_to userbike_path(@bike)
         else
@@ -23,13 +22,17 @@ class UserbikesController < ApplicationController
 
 
     def show
-        @bike = Userbike.find_by_id(params[:id])
+        @bike = current_user.userbikes.find_by_id(params[:id])
+    end
+
+    def edit
+        @bike = current_user.userbikes.find_by_id(params[:id])
     end
 
     def update 
-        @bike = Userbike.find_by_id(params[:id])
-        @bike.update_attribues(params[:bikes])
-        redirect_to bike_path(@bike)
+        @bike = current_user.userbikes.find_by_id(params[:id])
+        @bike.update(userbike_params)
+        redirect_to userbike_path(@bike)
     end
 
     def destroy
