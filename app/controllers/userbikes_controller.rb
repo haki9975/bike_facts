@@ -16,7 +16,7 @@ class UserbikesController < ApplicationController
           redirect_to userbike_path(@bike)
         else
           flash[:message] = "Bike Information Could Not Be Saved, Check Parameters."
-          redirect_to new_userbike_path
+          render :new 
         end
     end
 
