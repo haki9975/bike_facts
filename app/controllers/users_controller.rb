@@ -9,7 +9,6 @@ class UsersController < ApplicationController
         if @user.save
             flash[:message] = "Congratulations, You Have Registered!"
             session[:id] = @user.id 
-            binding.pry
             redirect_to userbikes_path
         else
             flash[:message] = @user.errors.full_messages

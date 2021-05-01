@@ -1,9 +1,3 @@
 <%= flash[:message] %>
-<div>
-<h1><%= @bike.bike.brand %></h1> 
-    <p><%=@bike.name%><br>
-    <p><%=@bike.serial_number%><br>
-    <p><%=@bike.notes%><br>
-</div>
-<%= button_to "Edit Info", edit_userbike_path(@bike), method: 'get' %>
-<%= button_to "Delete Bike", userbikes_path(@bike), method: "delete" %>
+
+<%= render 'show' || "Oops, you haven't created any bikes yet!" %>

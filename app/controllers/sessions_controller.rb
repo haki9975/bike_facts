@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
     def new
+        redirect_if_logged_in
       @user = User.find_by_id(params[:id])
     end
 
@@ -8,7 +9,7 @@ class SessionsController < ApplicationController
         if @user && @user.authenticate(params[:user][:username])
             flash[:message] = "Welcome Back!"
             session[:user_id] = @user.id
-            redirect_to bikes_path
+            redirect_to userbikes_path
         else
             flash[:message] = "Login Failed, Please Check Credentials"
             render :new
@@ -33,15 +34,21 @@ class SessionsController < ApplicationController
         if @user.valid?
             flash[:message] = "Signed in with Google"
             session[:user_id] = @user.id 
-            redirect_to bikes_path
+            redirect_to userbikes_path
         else 
             flash[:message] = "Could Not Login, Please Check Credentials"
-            redirect_to login_path
+            render :new
         end
     end
 
     private 
     def auth
       request.env['omniauth.auth']
+    end
+
+    def redirect_if_logged_in
+        if logged_in?
+            redirect_to userbikes_path
+        end
     end
 end

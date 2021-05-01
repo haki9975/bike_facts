@@ -22,23 +22,26 @@ class UserbikesController < ApplicationController
 
 
     def show
-        @bike = current_user.userbikes.find_by_id(params[:id])
+        redirect_if_ubikes_not_authorized
+        if @bike != nil 
+          @record = @bike.service_records
+        end
     end
 
     def edit
-        @bike = current_user.userbikes.find_by_id(params[:id])
+        redirect_if_ubikes_not_authorized
     end
 
     def update 
-        @bike = current_user.userbikes.find_by_id(params[:id])
+        redirect_if_ubikes_not_authorized
         @bike.update(userbike_params)
         redirect_to userbike_path(@bike)
     end
 
     def destroy
-        @bike = Userbike.find_by_id(params[:id])
+        redirect_if_ubikes_not_authorized
         @bike.destroy
-        redirect_to new_userbike_path
+        redirect_to userbikes_path
     end
 
 
@@ -47,5 +50,12 @@ class UserbikesController < ApplicationController
     private
      def userbike_params
         params.require(:userbike).permit(:id, :name, :notes, :user_id, :bike_id, :serial_number)
+     end
+
+     def redirect_if_ubikes_not_authorized
+        @bike = current_user.userbikes.find_by_id(params[:id])
+        if @bike == nil 
+            redirect_to userbikes_path
+        end
      end
 end

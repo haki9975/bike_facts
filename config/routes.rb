@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :userbikes
+  resources :userbikes do 
+    resources :service_records
+  end
   root('static#home')
   resources :users, only: [:new, :create]
   get '/login', to: 'sessions#new'

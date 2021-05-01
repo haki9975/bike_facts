@@ -1,13 +1,5 @@
 <h1> Enter Your Bike's Information Here: </h1>
 <%= flash[:message] %>
-<%= form_with(model: @bike, url: userbikes_path, method: "post")do |f| %>
-   <%=f.collection_select(:bike_id, Bike.all, :id, :brand) %>
-   
-        <%= f.label :name %>
-    <%= f.text_field :name %><br>
-    <%= f.label :serial_number %>
-    <%= f.text_field :serial_number %><br>
-    <%= f.label :notes %>
-    <%= f.text_field :notes %><br>
-    <%= f.submit "Save Bike" %>
+<%= form_with(model: @bike, url: userbikes_path, method: "post")do |b| %>
+    <%= render 'form' %>
 <% end %>

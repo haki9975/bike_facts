@@ -1,14 +1,6 @@
 <h1> Your Bikes Index </h1>
-<% if @ubikes != []%>
-  <% @ubikes.each do |b| %>
-    <h2><%= b.bike.brand %></h2>
-    <h4><%= b.name %></h4>
-    <p><%= b.serial_number %></p>
-    <%= button_to "View Bike", userbike_path(b.id), method: 'get'%>
-    <%= button_to "Edit", edit_userbike_path(b.id), method: 'get' %>
-  <% end %>
-<% else %>
-    <p> Oops, you haven't created a bike yet! </p>
-    <%= link_to "Create Bike Here!", new_userbike_path %>
-<% end %> 
 
+
+<%= render "ubikes" || "Oops! You haven't created any bikes yet!" %>
+
+<%= button_to "Create Bike Here!", new_userbike_path, method: "get" %>

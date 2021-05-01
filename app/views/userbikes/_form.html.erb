@@ -1,0 +1,10 @@
+<%= form_with(model: @bike, url: userbikes_path, method: "post")do |b| %>
+    <%= b.collection_select(:bike_id, Bike.all, :id, :brand) %>
+    <%= b.label :name %>
+    <%= b.text_field :name %><br>
+    <%= b.label :serial_number %>
+    <%= b.text_field :serial_number %><br>
+    <%= b.label :notes %>
+    <%= b.text_field :notes %><br>
+    <%= b.submit "Save Bike" %>
+<%end%>

@@ -1,0 +1,11 @@
+<% if @ubikes != []%>
+  <% @ubikes.each do |b| %>
+    <h2><%= b.bike.brand %></h2>
+    <h4><%= b.name %></h4>
+    <p><%= b.serial_number %></p>
+    <%= button_to "View Bike", userbike_path(b.id), method: 'get'%>
+    <%= button_to "Edit Bike", edit_userbike_path(b.id), method: 'get' %>
+  <% end %>
+<% else %>
+    <p> Oops, you haven't created a bike yet! </p>
+<% end %> 

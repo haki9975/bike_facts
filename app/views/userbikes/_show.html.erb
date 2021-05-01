@@ -1,0 +1,9 @@
+<div>
+
+<h1><%= @bike.bike.brand %></h1> 
+    <p><%=@bike.name%><br>
+    <p><%=@bike.serial_number%><br>
+    <p><%=@bike.notes%><br>
+<%= button_to "Edit Info", edit_userbike_path(@bike), method: 'get' %>
+<%= button_to "Delete Bike", userbike_path(@bike), method: "delete" %>
+</div>

@@ -1,0 +1,9 @@
+ <div>
+  <%= @record.collect do |r| %>
+        <%= r.name %><br>
+    <%= r.userbike.name %><br>
+    <%= r.date %><br>
+    <%= r.cost %><br>
+    <%= r.notes %>
+    <% end %>
+ </div>

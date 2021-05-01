@@ -19,21 +19,34 @@ class ServiceRecordsController < ApplicationController
             render :new
         end
     end
-
+    def edit
+        redirect_if_not_authorized
+    end
     def update 
-        @record = current_user.service_records.find_by_id([:id])
+        redirect_if_not_authorized
         @record.update(service_params)
         redirect_to service_record_path
     end
 
+    def show
+        redirect_if_not_authorized
+    end
+
     def destroy
-        @record = current_user.service_records.find_by_id(params[:id])
+        redirect_if_not_authorized
         @record.destroy 
         redirect to new_service_record_path
     end
 
     private 
     def service_params
-        params.require(:service_records).permit(:name, :date, :cost, :notes, :userbike_id)
+        params.require(:service_record).permit(:name, :date, :cost, :notes, :userbike_id)
+    end
+
+    def redirect_if_not_authorized
+        @record = current_user.service_records.find_by_id(params[:id])
+        if @records == nil
+                redirect_to userbikes_path
+        end
     end
 end

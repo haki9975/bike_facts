@@ -1,0 +1,12 @@
+<%= form_with(model: @record, url: service_records_path, method: "post") do |f| %>
+<%= f.collection_select(:userbike_id, current_user.userbikes, :id, :name) %><br>
+<%= f.label :name %><br>
+<%= f.text_field :name %><br>
+<%= f.label :date %><br>
+<%= f.date_select :date %><br>
+<%= f.label :cost %><br>
+<%= f.number_field :cost %> <br>
+<%= f.label :notes %><br>
+<%= f.text_area :notes %><br>
+<%= f.submit :submit %>
+<% end %>

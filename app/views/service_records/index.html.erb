@@ -1,0 +1,4 @@
+<h1> View All Service Records:  </h1>
+ <%= render "index" || "Oops! You haven't created any records!" %> 
+ 
+    <%= button_to "Create A Record Here!", new_service_record_path, method: "get" %>

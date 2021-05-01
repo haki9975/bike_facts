@@ -1,5 +1,5 @@
 class ServiceRecord < ApplicationRecord
-    belongs_to :userbikes
+    belongs_to :userbike
     belongs_to :user 
     
 end

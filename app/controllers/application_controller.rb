@@ -4,10 +4,10 @@ class ApplicationController < ActionController::Base
 
     private
     def redirect_if_not_logged_in
-        puts "hello"
-       # binding.irb
          if !logged_in?
             redirect_to login_path
          end
     end
+
+
 end

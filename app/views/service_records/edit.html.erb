@@ -1,0 +1,8 @@
+<h1> Edit Service Record </h1>
+
+<%= flash[:message] %>
+
+    <%=render 'form' || "Oops, you don't have any records!"%>
+
+
+<%= button_to "delete record", service_records_path(@record), method: "delete" %>

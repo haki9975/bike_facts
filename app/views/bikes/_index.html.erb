@@ -1,0 +1,6 @@
+<%= flash[:message] %>
+<% @bikes.each do |b| %>
+    <%=  b %><br>
+<% end %>
+
+<%= button_to "Add Bike Brand", new_bike_path, method: "get"%>
