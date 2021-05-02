@@ -1,9 +1,17 @@
  <div>
-  <%= @record.collect do |r| %>
+  <% @record.collect do |r| %>
         <%= r.name %><br>
     <%= r.userbike.name %><br>
     <%= r.date %><br>
     <%= r.cost %><br>
     <%= r.notes %>
     <% end %>
+ </div>
+
+ <div>
+ <h1> Your most expensive records: </h1>
+    <% @mostex.each do |r| %>
+      <%= r.name %>
+      <%= r.cost  %>
+   <% end %>
  </div>

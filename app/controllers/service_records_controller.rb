@@ -3,6 +3,8 @@ class ServiceRecordsController < ApplicationController
 
     def index
         @record = current_user.service_records
+        @mostex = current_user.service_records.expensiverecord
+      
     end
 
     def new 
