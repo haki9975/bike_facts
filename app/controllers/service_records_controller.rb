@@ -1,18 +1,25 @@
 class ServiceRecordsController < ApplicationController
     before_action :redirect_if_not_logged_in
-
+    before_action :find_userbike 
+                    
     def index
         @record = current_user.service_records
         @mostex = current_user.service_records.expensiverecord
-      
     end
 
     def new 
-        @record = ServiceRecord.new 
+        if @userbike
+            @record = @userbike.service_records.build
+        else
+         @record = ServiceRecord.new 
+        end
     end
 
     def create 
-        @record = current_user.service_records.build(service_params)
+        #@record = current_user.service_records.build(service_params)
+        @record = ServiceRecord.new(service_params)
+        @record.user_id = current_user.id
+        @record.userbike_id = @userbike.id if @userbike
         if @record.save 
             flash[:message] = "Service Record Created Succesfully!"
             redirect_to service_record_path(@record)

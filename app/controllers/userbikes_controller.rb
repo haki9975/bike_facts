@@ -49,7 +49,7 @@ class UserbikesController < ApplicationController
 
     private
      def userbike_params
-        params.require(:userbike).permit(:id, :name, :notes, :user_id, :bike_id, :serial_number)
+        params.require(:userbike).permit(:id, :name, :notes, :user_id, :bike_id, :serial_number, service_record_attributes: [:name, :date, :cost, :notes])
      end
 
      def redirect_if_ubikes_not_authorized
