@@ -1,5 +1,7 @@
 <h1> Enter Your Bike's Information Here: </h1>
 <%= flash[:message] %>
 <%= form_with(model: @bike, url: userbikes_path, method: "post")do |b| %>
+    <p> Brand:</p>
+     <%= b.collection_select(:bike_id, Bike.all, :id, :brand) %> <br><br>
     <%= render 'form' %>
 <% end %>

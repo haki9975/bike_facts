@@ -6,4 +6,5 @@
     <p><%=@bike.notes%><br>
 <%= button_to "Edit Info", edit_userbike_path(@bike), method: 'get' %>
 <%= button_to "Delete Bike", userbike_path(@bike), method: "delete" %>
+<%= button_to "View Service Records", userbike_service_records_path(@bike), method: 'get' %>
 </div>

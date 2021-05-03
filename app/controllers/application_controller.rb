@@ -13,5 +13,11 @@ class ApplicationController < ActionController::Base
         @userbike = Userbike.find_by_id(params[:userbike_id])
     end
 
+    def redirect_if_logged_in
+        if logged_in?
+            redirect_to userbikes_path
+        end
+    end
+
 
 end

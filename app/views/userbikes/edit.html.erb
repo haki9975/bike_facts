@@ -1,2 +1,4 @@
 <h1> Edit Bike Info: </h1>
+<%= form_with(model: @bike, url: userbike_path, method: "patch")do |b| %>
     <%=render 'form' %>
+<%end%>

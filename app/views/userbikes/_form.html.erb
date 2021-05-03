@@ -1,10 +1,11 @@
-<%= form_with(model: @bike, url: userbikes_path, method: "post")do |b| %>
-    <%= b.collection_select(:bike_id, Bike.all, :id, :brand) %>
-    <%= b.label :name %>
+<%#= form_with(model: @bike, url: userbikes_path, method: "post")do |b| %>
+    <%= render partial: 'errors/errors', locals: {model: @bike } %>
+<%= form_with(model: [@bike]) do |b| %>
+    <%= b.label :name %><br>
     <%= b.text_field :name %><br>
-    <%= b.label :serial_number %>
+    <%= b.label :serial_number %><br>
     <%= b.text_field :serial_number %><br>
-    <%= b.label :notes %>
+    <%= b.label :notes %><br>
     <%= b.text_field :notes %><br>
     <%= b.submit "Save Bike" %>
 <%end%>

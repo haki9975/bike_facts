@@ -1,6 +1,7 @@
 <h1> Your Bikes Index </h1>
+<div>
+    <%= button_to "Create Bike Here!", new_userbike_path, method: "get" %>
+</div>
 
 
-<%= render "ubikes" || "Oops! You haven't created any bikes yet!" %>
-
-<%= button_to "Create Bike Here!", new_userbike_path, method: "get" %>
+    <%= render "ubikes" || "Oops! You haven't created any bikes yet!" %>

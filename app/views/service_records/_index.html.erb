@@ -1,17 +1,26 @@
- <div>
-  <% @record.collect do |r| %>
-        <%= r.name %><br>
-    <%= r.userbike.name %><br>
-    <%= r.date %><br>
-    <%= r.cost %><br>
-    <%= r.notes %>
-    <% end %>
- </div>
+<% if @records != []%>
 
- <div>
- <h1> Your most expensive records: </h1>
-    <% @mostex.each do |r| %>
-      <%= r.name %>
-      <%= r.cost  %>
+  <% @records.each do |r| %>
+    <div>
+       <h2> <%= r.name %></h2><br>
+       <%= r.userbike.name %><br>
+       <%= r.date %><br>
+       <%= r.cost %><br>
+       <%= r.notes %><br>
+       <%= button_to "View Record", service_record_path(r), method: 'get' %>
+    </div>
+   <% end %>
+
+   <% if @mostex != [] %>
+    <h1> Your records over $50: </h1>
+      <% @mostex.each do |r| %>
+       <%= r.name %> <br>
+       <%= r.cost  %><br>
+       <%= button_to "View Record", service_record_path(r), method: 'get' %>
+     <% end %>
    <% end %>
  </div>
+ 
+<% else %>
+    <p>  Oops, you haven't created any records! </p>
+<% end %> 

@@ -1,7 +1,10 @@
-<h1> Bike Info: </h1>  
-
-    <%= @record.name %>
-    <%= @record.userbike.name %>
-    <%= @record.date %>
-    <%= @record.cost %>
-    <%= @record.notes %>
+<h1> Service Record Info: </h1>  
+<div>
+   <h2> <%= @record.name %> </h2>
+   <p> Bike Name: </p>
+    <h4><%= @record.userbike.name %></h4><br>
+    <p> Date: <%= @record.date %></p><br>
+    <p> Cost: $<%= @record.cost %><br></p>
+    <p> Notes: </p>
+    <%= @record.notes %><br>
+</div>

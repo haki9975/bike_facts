@@ -1,12 +1,13 @@
-<%= form_with(model: [@userbike, @record], method: "post") do |f| %>
+<%= render partial: 'errors/errors', locals: {model: @record } %>
+<%= form_with(model: [@userbike, @record]) do |f| %>
 <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-<%= f.collection_select(:userbike_id, current_user.userbikes, :id, :name) %><br>
+<%#= f.collection_select(:userbike_id, current_user.userbikes, :id, :name) %><br>
 <%= f.label :name %><br>
 <%= f.text_field :name %><br>
 <%= f.label :date %><br>
 <%= f.date_select :date %><br>
-<%= f.label :cost %><br>
-<%= f.number_field :cost %> <br>
+<%= f.label :cost  %><br>
+<%= f.number_field :cost, step: :any %> <br>
 <%= f.label :notes %><br>
 <%= f.text_area :notes %><br>
 <%= f.submit :submit %>

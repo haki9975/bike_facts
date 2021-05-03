@@ -3,8 +3,13 @@ class ServiceRecordsController < ApplicationController
     before_action :find_userbike 
                     
     def index
-        @record = current_user.service_records
-        @mostex = current_user.service_records.expensiverecord
+       if @userbike
+             @records = @userbike.service_records
+             @mostex = @userbike.service_records.expensiverecord
+       else
+            @records = current_user.service_records
+            @mostex = current_user.service_records.expensiverecord
+       end
     end
 
     def new 
@@ -16,9 +21,7 @@ class ServiceRecordsController < ApplicationController
     end
 
     def create 
-        #@record = current_user.service_records.build(service_params)
-        @record = ServiceRecord.new(service_params)
-        @record.user_id = current_user.id
+        @record = current_user.service_records.build(service_params)
         @record.userbike_id = @userbike.id if @userbike
         if @record.save 
             flash[:message] = "Service Record Created Succesfully!"
@@ -49,12 +52,12 @@ class ServiceRecordsController < ApplicationController
 
     private 
     def service_params
-        params.require(:service_record).permit(:name, :date, :cost, :notes, :userbike_id)
+        params.require(:service_record).permit(:name, :date, :cost, :notes, :userbike_id, userbike_attributes: [:name, :serial_number, :notes])
     end
 
     def redirect_if_not_authorized
         @record = current_user.service_records.find_by_id(params[:id])
-        if @records == nil
+        if @record == nil
                 redirect_to userbikes_path
         end
     end

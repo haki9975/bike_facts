@@ -10,8 +10,8 @@ class BikesController < ApplicationController
         if @bikes.save
             redirect_to bikes_path
         else
-            flash[:message] = "Sorry, bike brand could not be saved."
-            redirect_to bikes_path
+            flash[:error] = "Sorry, bike brand could not be saved."
+           # redirect_to bikes_path
         end
     end
 

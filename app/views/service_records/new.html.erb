@@ -1,5 +1,6 @@
 <h1> Create A Service Record </h1>
 <%= flash[:message] %>
-<%= form_with(model: @record, url: service_records_path, method: "post") do |f| %>
+<%= form_with(model: @record, url: userbike_service_records_path, method: "post" ) do |f| %>
     <%= render 'form' %>
+    
 <% end %>

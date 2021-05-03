@@ -1,3 +1,4 @@
+<%= render partial: 'errors/errors', locals: { model: @bikes } %>
 <%= form_for(@bikes) do |f| %>
     <%= f.label :brand %>
     <%= f.text_field :brand %>

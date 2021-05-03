@@ -34,6 +34,7 @@ class UserbikesController < ApplicationController
 
     def update 
         redirect_if_ubikes_not_authorized
+        #binding.pry
         @bike.update(userbike_params)
         redirect_to userbike_path(@bike)
     end
