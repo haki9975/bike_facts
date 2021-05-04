@@ -1,10 +1,14 @@
 <h1> Service Record Info: </h1>  
+
 <div>
-   <h2> <%= @record.name %> </h2>
+   <h2> <%= @records.name %> </h2>
    <p> Bike Name: </p>
-    <h4><%= @record.userbike.name %></h4><br>
-    <p> Date: <%= @record.date %></p><br>
-    <p> Cost: $<%= @record.cost %><br></p>
+    <h4><%= @records.userbike.name %></h4><br>
+    <p> Date: <%= @records.date %></p><br>
+    <p> Cost: $<%= @records.cost %><br></p>
     <p> Notes: </p>
-    <%= @record.notes %><br>
+    <%= @records.notes %><br>
+    <%= button_to "Edit Record", edit_userbike_service_record_path(userbike_id: @userbike.id, id: @records.id), method: 'get' %>
+<%= button_to "Delete Record", userbike_service_record_path(userbike_id: @userbike.id, id: @records.id), method: "delete" %>
 </div>
+

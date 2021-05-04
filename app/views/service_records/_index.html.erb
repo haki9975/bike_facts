@@ -7,7 +7,7 @@
        <%= r.date %><br>
        <%= r.cost %><br>
        <%= r.notes %><br>
-       <%= button_to "View Record", service_record_path(r), method: 'get' %>
+       <%= button_to "View Record", userbike_service_record_path(userbike_id: @userbike.id, id: r.id ), method: 'get' %>
     </div>
    <% end %>
 
@@ -16,7 +16,7 @@
       <% @mostex.each do |r| %>
        <%= r.name %> <br>
        <%= r.cost  %><br>
-       <%= button_to "View Record", service_record_path(r), method: 'get' %>
+       <%= button_to "View Record", userbike_service_record_path(userbike_id: @userbike.id, id: r.id), method: 'get' %>
      <% end %>
    <% end %>
  </div>

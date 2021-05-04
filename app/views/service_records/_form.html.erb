@@ -1,7 +1,7 @@
-<%= render partial: 'errors/errors', locals: {model: @record } %>
-<%= form_with(model: [@userbike, @record]) do |f| %>
+<%= render partial: 'errors/errors', locals: {model: @records } %>
+<%= form_with(model: [@userbike, @records]) do |f| %>
 <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-<%#= f.collection_select(:userbike_id, current_user.userbikes, :id, :name) %><br>
+<%= f.hidden_field :userbike_id, value: params[:userbike_id] %><br>
 <%= f.label :name %><br>
 <%= f.text_field :name %><br>
 <%= f.label :date %><br>

@@ -9,9 +9,10 @@ class ApplicationController < ActionController::Base
          end
     end
 
-    def find_userbike
-        @userbike = Userbike.find_by_id(params[:userbike_id])
-    end
+   # def find_userbike
+    #    @userbike = Userbike.find_by_id(params[:userbike_id])
+  #  end
+
 
     def redirect_if_logged_in
         if logged_in?

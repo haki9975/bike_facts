@@ -1,8 +1,11 @@
 class ServiceRecordsController < ApplicationController
     before_action :redirect_if_not_logged_in
-    before_action :find_userbike 
+    
+   
                     
     def index
+        redirect_if_not_authorized
+        @userbike = Userbike.find_by_id(params[:userbike_id])
        if @userbike
              @records = @userbike.service_records
              @mostex = @userbike.service_records.expensiverecord
@@ -13,52 +16,64 @@ class ServiceRecordsController < ApplicationController
     end
 
     def new 
+        redirect_if_not_authorized
         if @userbike
-            @record = @userbike.service_records.build
+            @records = @userbike.service_records.build
         else
-         @record = ServiceRecord.new 
+             @records = ServiceRecord.new 
         end
     end
 
     def create 
-        @record = current_user.service_records.build(service_params)
-        @record.userbike_id = @userbike.id if @userbike
-        if @record.save 
+        @records = current_user.service_records.build(service_params)
+        if @records.save 
             flash[:message] = "Service Record Created Succesfully!"
-            redirect_to service_record_path(@record)
+            redirect_to service_record_path(@records)
         else 
             flash[:message] = "There Was An Error, Please Try Again Later"
             render :new
         end
     end
+
     def edit
         redirect_if_not_authorized
+        @records = ServiceRecord.find_by_id(params[:id])
     end
+
     def update 
         redirect_if_not_authorized
-        @record.update(service_params)
-        redirect_to service_record_path
+        @records = ServiceRecord.find_by_id(params[:id])
+        
+      # if @records.update(service_params)
+     #   redirect_to userbikes_path
+     #  end
     end
 
     def show
-        redirect_if_not_authorized
+       redirect_if_not_authorized
+       @records = ServiceRecord.find_by(id: params[:id])
+       @userbike = @records.userbike
+       
     end
 
     def destroy
         redirect_if_not_authorized
-        @record.destroy 
-        redirect to new_service_record_path
+        @records = ServiceRecord.find_by(id: params[:id])
+        @records.destroy 
+        redirect_to userbikes_path
     end
 
     private 
     def service_params
-        params.require(:service_record).permit(:name, :date, :cost, :notes, :userbike_id, userbike_attributes: [:name, :serial_number, :notes])
+        params.require(:service_record).permit(:name, :date, :cost, :notes, :userbike_id, userbike_attributes: [:id, :name, :serial_number, :notes])
     end
 
+
+
     def redirect_if_not_authorized
-        @record = current_user.service_records.find_by_id(params[:id])
-        if @record == nil
-                redirect_to userbikes_path
+        auth = current_user.userbikes.pluck(:id).include? params[:userbike_id].to_i
+        if !auth 
+            redirect_to userbikes_path
         end
-    end
+     end
 end
