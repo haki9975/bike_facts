@@ -17,6 +17,11 @@ class BikesController < ApplicationController
 
     def index
         @bikes = Bike.all.map {|b| b.brand}
+        @querybikes = Bike.search
+    end
+
+    def search
+        @bikes = Bike.bikequery(params[:query])
     end
 
     private
