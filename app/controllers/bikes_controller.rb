@@ -17,12 +17,12 @@ class BikesController < ApplicationController
 
     def index
         @bikes = Bike.all.map {|b| b.brand}
-        @querybikes = Bike.bikequery("waltworks")
+        # @querybikes = Bike.bikequery("waltworks")
     end
 
-    def search
-        binding.irb
-        @bikes = Bike.bikequery(params[:query])
+    def search        
+        bikes = Bike.bikequery(params[:query])
+        @querybikes = bikes.map { |b| b.brand }
     end
 
     private

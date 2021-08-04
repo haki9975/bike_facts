@@ -1,10 +1,7 @@
 <h1> Search Bike Brands </h1>
 
-<%=  form_with url:bikes_search_path, method: 'get' do |f| %>
-    <%= f.label 'Search for a bike brand: ' %>
-    <%= f.text_field :query %>
-    <%= f.submit %>
+<h3>Results:</h3>
+
+<% @querybikes.each do |b| %>
+    <%= b %>
 <% end %>
-
-
-<%= @bikes.each 
