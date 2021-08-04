@@ -17,7 +17,7 @@ class BikesController < ApplicationController
 
     def index
         @bikes = Bike.all.map {|b| b.brand}
-        @querybikes = Bike.search
+        @querybikes = Bike.bikequery("waltworks")
     end
 
     def search
