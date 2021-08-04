@@ -1,11 +1,9 @@
 class ServiceRecordsController < ApplicationController
-    before_action :redirect_if_not_logged_in
+    before_action :redirect_if_not_logged_in, :redirect_if_not_authorized
+
     
-   
-                    
     def index
-        redirect_if_not_authorized
-        @userbike = Userbike.find_by_id(params[:userbike_id])
+      @userbike = Userbike.find_by_id(params[:userbike_id])
        if @userbike
              @records = @userbike.service_records
              @mostex = @userbike.service_records.expensiverecord
@@ -16,7 +14,6 @@ class ServiceRecordsController < ApplicationController
     end
 
     def new 
-        redirect_if_not_authorized
         if @userbike
             @records = @userbike.service_records.build
         else
@@ -36,28 +33,20 @@ class ServiceRecordsController < ApplicationController
     end
 
     def edit
-        redirect_if_not_authorized
         @records = ServiceRecord.find_by_id(params[:id])
     end
 
     def update 
-        redirect_if_not_authorized
         @records = ServiceRecord.find_by_id(params[:id])
-        
-      # if @records.update(service_params)
-     #   redirect_to userbikes_path
-     #  end
     end
 
     def show
-       redirect_if_not_authorized
        @records = ServiceRecord.find_by(id: params[:id])
        @userbike = @records.userbike
        
     end
 
     def destroy
-        redirect_if_not_authorized
         @records = ServiceRecord.find_by(id: params[:id])
         @records.destroy 
         redirect_to userbikes_path
@@ -71,7 +60,7 @@ class ServiceRecordsController < ApplicationController
 
 
     def redirect_if_not_authorized
-        auth = current_user.userbikes.pluck(:id).include? params[:userbike_id].to_i
+      auth = current_user.userbikes.pluck(:id).include? params[:userbike_id].to_i
         if !auth 
             redirect_to userbikes_path
         end
