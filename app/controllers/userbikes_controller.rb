@@ -20,11 +20,9 @@ class UserbikesController < ApplicationController
         end
     end
 
-
     def show
         redirect_if_ubikes_not_authorized
-        @bike = Userbike.find(params[:id])
-        #binding.pry
+        @bike = find_userbike
         if @bike != nil 
           @record = @bike.service_records
         end
@@ -32,26 +30,22 @@ class UserbikesController < ApplicationController
 
     def edit 
         redirect_if_ubikes_not_authorized
-        @bike = Userbike.find_by_id(params[:id])
+        @bike = find_userbike
     end
 
     def update 
         redirect_if_ubikes_not_authorized
-        @bike = Userbike.find_by_id(params[:id])
+        @bike = find_userbike
         @bike.update(userbike_params)
         redirect_to userbike_path(@bike)
     end
 
     def destroy
         redirect_if_ubikes_not_authorized
-        @userbike = Userbike.find_by_id(params[:id])
-        
+        @userbike = find_userbike
         @userbike.destroy
         redirect_to userbikes_path
     end
-
-
-
 
     private
      def userbike_params
@@ -66,6 +60,6 @@ class UserbikesController < ApplicationController
      end
     
      def find_userbike
-        @userbike = Userbike.find_by_id(params[:userbike_id])
+        @userbike = Userbike.find_by_id(params[:id])
     end
 end
