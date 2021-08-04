@@ -11,13 +11,11 @@ class BikesController < ApplicationController
             redirect_to bikes_path
         else
             flash[:error] = "Sorry, bike brand could not be saved."
-           # redirect_to bikes_path
         end
     end
 
     def index
-        @bikes = Bike.all.map {|b| b.brand}
-        # @querybikes = Bike.bikequery("waltworks")
+        @bikes = Bike.all.map { |b| b.brand }
     end
 
     def search        
@@ -30,7 +28,4 @@ class BikesController < ApplicationController
     def bike_params
         params.require(:bike).permit(:id, :brand, :user_id)
     end
-    
-    
-
 end
