@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
     include ApplicationHelper
-    
-
+  
     private
     def redirect_if_not_logged_in
          if !logged_in?
@@ -9,16 +8,9 @@ class ApplicationController < ActionController::Base
          end
     end
 
-   # def find_userbike
-    #    @userbike = Userbike.find_by_id(params[:userbike_id])
-  #  end
-
-
     def redirect_if_logged_in
         if logged_in?
             redirect_to userbikes_path
         end
     end
-
-
 end
