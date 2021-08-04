@@ -1,49 +1,25 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Built with Ruby on Rails 6.1.3
 
-Things you may want to cover:
+BikeFacts is A Rails app that allows potential bicycle buyers to learn about the maintenance history for bicycles, similar to a Carfax report.
 
-* Ruby version
+In this beta version, you can create an account and log bicycles that will be associated with your account. For each of these bikes, you are able to maintain records of maintence that you have performed on these bikes. 
 
-* System dependencies
+It is a good way to keep track of tasks and expenses that you have performed, or had someone perform, on your bikes. 
 
-* Configuration
+In future versions, I will include accident reporting for major events that may have comprimised the shape of the bicycle.
 
-* Database creation
+I also plan to include a serial-number database where you can look up records by the bike serial number, instead of manually through the bike's show page. 
 
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+Copyright 2021 Elias Robert Hakim || haki9975
 
-* ...
 
-Specifications for the Rails Assessment
-Specs:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-# Using Ruby on Rails for the project
-# Include at least one has_many relationship (x has_many y; e.g. User has_many Recipes)
-#  Include at least one belongs_to relationship (x belongs_to y; e.g. Post belongs_to User)
-# Include at least two has_many through relationships (x has_many y through z; e.g. Recipe has_many Items through Ingredients)
-# Include at least one many-to-many relationship (x has_many y through z, y has_many x through z; e.g. Recipe has_many Items through Ingredients, Item has_many Recipes through Ingredients)
- # The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user (attribute_name e.g. ingredients.quantity)
- # Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
- # Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
- # Include signup
- # Include login
- # Include logout
- # Include third party signup/login (how e.g. Devise/OmniAuth)
- Include nested resource show or index (URL e.g. users/2/recipes)
- Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
- Include form display of validation errors (form URL e.g. /recipes/new)
-Confirm:
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
- # The application is pretty DRY
- # Limited logic in controllers
- # Views use helper methods if appropriate
- # Views use partials if appropriate
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
