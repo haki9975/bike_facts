@@ -21,6 +21,7 @@ class BikesController < ApplicationController
     end
 
     def search
+        binding.irb
         @bikes = Bike.bikequery(params[:query])
     end
 
