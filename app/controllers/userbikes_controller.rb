@@ -60,6 +60,6 @@ class UserbikesController < ApplicationController
      end
     
      def find_userbike
-        @userbike = Userbike.find_by_id(params[:id])
+        Userbike.find_by_id(params[:id])
     end
 end

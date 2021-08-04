@@ -33,21 +33,21 @@ class ServiceRecordsController < ApplicationController
     end
 
     def edit
-        @records = ServiceRecord.find_by_id(params[:id])
+        @records = find_service
     end
 
     def update 
-        @records = ServiceRecord.find_by_id(params[:id])
+        @records = find_service
     end
 
     def show
-       @records = ServiceRecord.find_by(id: params[:id])
+       @records = find_service
        @userbike = @records.userbike
        
     end
 
     def destroy
-        @records = ServiceRecord.find_by(id: params[:id])
+        @records = find_service
         @records.destroy 
         redirect_to userbikes_path
     end
@@ -57,7 +57,9 @@ class ServiceRecordsController < ApplicationController
         params.require(:service_record).permit(:name, :date, :cost, :notes, :userbike_id, userbike_attributes: [:id, :name, :serial_number, :notes])
     end
 
-
+    def find_service
+        ServiceRecord.find_by_id(params[:id])
+    end
 
     def redirect_if_not_authorized
       auth = current_user.userbikes.pluck(:id).include? params[:userbike_id].to_i
